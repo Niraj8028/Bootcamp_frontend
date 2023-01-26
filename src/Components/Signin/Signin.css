@@ -1,27 +1,54 @@
-.form{
-    margin: 30px;
+.signin{
+    background-color: rgba(0, 0, 0, 0.534);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin: 50px;
+}
+.signin_container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
-    border: solid 1px rgb(255, 255, 255);
-    width: 30%;
-   
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgb(18, 18, 18);
+    border: 1px solid lightgrey;
 }
-.form input{
-    padding: 5px;
-    display: block;
-    margin: 150px;
-    width: 80%;
-    height: 20px;
-    border: solid 1px rgb(255, 255, 255);
+.tittle{
+    font-weight: 600;
+    margin-bottom:20px ;
 }
-.form button{
-    height: 30px;
+.logo{
     width: 100px;
-    margin: 15px;
-    background-color: rgb(42, 112, 173);
-    border: none;
-    color: white;
+    object-fit: contain;  
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.signin__form > form> h5{
+    margin-bottom: 5px;
+}    
+.signin__form > form> p{
+    margin-top: 15px;
+    font-size: 12px;
+}    
+.signin__form > form> input{
+    margin-bottom: 10px;
+    width: 98%;
+    height: 25px;
+}    
+.signin_btn{
+    height: 25px;
+    width: 100%;
+    background-color: #f0c14b;
+    border: 1px solid;
+    border-color: #a88734 #9c7e31 #846a29;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.create_btn{
+    margin-top: 10px;
+    width: 100%;
+    height: 25px;
+    border: 1px solid darkgray;
+
 }

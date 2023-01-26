@@ -1,52 +1,67 @@
-import React,{useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
-import "./Signin.css"
 
-function Login() {
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-  const [email, setEmail] = useState("admin@test.com")
-  const [password, setPassword] = useState("123")
-  const navigate=useNavigate();
+import './Signin.css'
 
-  useEffect(()=>{
-    const auth=localStorage.getItem('User');
-    if(auth){
-      navigate('/')
-    }
 
-  },[])
+function Signin() {
+    let navigate=useNavigate();
 
-  // const handleclick=async()=>{
-  //   console.log({email,password});
-    // let result=await fetch('https://imdbclone-production.up.railway.app/api/login',{
-    //   method:'POST',
-    //   body:JSON.stringify({email,password}),
-    //   headers:{
-    //     'Content-Type':'Application/JSON'
-    //   }
-    // })
-    // result=await result.json();
-    // console.log(result)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-  //   if(result.user){
-  //     localStorage.setItem('User',JSON.stringify(result.user));
-  //     localStorage.setItem('token',JSON.stringify(result.auth));
-  //     navigate("/")
-  //   }
-  //   else{
-  //     alert("Please Enter Valid details")
-  //   }
-  // }
 
-  return (
-    
-    <div className='form'>
-      <h2>Login</h2>
-      <input type="email" placeholder='Enter Your Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-      <input type="password" placeholder='Enter Your Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
-      <button type='submit'>Login</button>
-    </div>
-  )
+    // const login = (e) => {
+    //     e.preventDefault();
+    //     auth.signInWithEmailAndPassword(email,password)
+    //     .then((auth)=>{
+    //         console.log("success");
+    //         navigate("/")
+    //     })
+    //     .catch(event=>alert(event.message))
+        
+        
+    // }
+    // const register = (e) => {
+    //     e.preventDefault();
+    //    auth.createUserWithEmailAndPassword(email,password)
+    //    .then((auth)=>{
+    //     navigate("/")
+    //    })
+    //    .catch(event=>alert(event.message))
+    // }
+
+
+
+    return (
+        <div className='signin'>
+            {/* <Link to="/">
+                <img className='logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' />
+            </Link> */}
+
+            <div className='signin_container'>
+                <h1 className='tittle'>Login</h1>
+                <div className='signin__form'>
+                    <form>
+                        <h5>E-mail</h5>
+                        <input value={email} onChange={(e) =>
+                                setEmail(e.target.value)
+                            } type="email"></input>
+                        <h5>Password</h5>
+                        <input value={password} onChange={e => setPassword(e.target.value)} type="password"></input>
+                        <button 
+                             
+                            className='signin_btn'>Sign in</button>
+
+                        <p> Please see our Privacy Notice,.our cookies Notice and Interest-based Ads Notice</p>
+                        <button 
+                          className='create_btn'>Create your Amazon Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    )
 }
 
-export default Login
+export default Signin
