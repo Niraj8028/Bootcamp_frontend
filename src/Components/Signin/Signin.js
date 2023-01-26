@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import './Login.css'
+import "./Signin.css"
 
 function Login() {
 
@@ -16,27 +16,27 @@ function Login() {
 
   },[])
 
-  const handleclick=async()=>{
-    console.log({email,password});
-    let result=await fetch('https://imdbclone-production.up.railway.app/api/login',{
-      method:'POST',
-      body:JSON.stringify({email,password}),
-      headers:{
-        'Content-Type':'Application/JSON'
-      }
-    })
-    result=await result.json();
-    console.log(result)
+  // const handleclick=async()=>{
+  //   console.log({email,password});
+    // let result=await fetch('https://imdbclone-production.up.railway.app/api/login',{
+    //   method:'POST',
+    //   body:JSON.stringify({email,password}),
+    //   headers:{
+    //     'Content-Type':'Application/JSON'
+    //   }
+    // })
+    // result=await result.json();
+    // console.log(result)
 
-    if(result.user){
-      localStorage.setItem('User',JSON.stringify(result.user));
-      localStorage.setItem('token',JSON.stringify(result.auth));
-      navigate("/")
-    }
-    else{
-      alert("Please Enter Valid details")
-    }
-  }
+  //   if(result.user){
+  //     localStorage.setItem('User',JSON.stringify(result.user));
+  //     localStorage.setItem('token',JSON.stringify(result.auth));
+  //     navigate("/")
+  //   }
+  //   else{
+  //     alert("Please Enter Valid details")
+  //   }
+  // }
 
   return (
     
@@ -44,7 +44,7 @@ function Login() {
       <h2>Login</h2>
       <input type="email" placeholder='Enter Your Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
       <input type="password" placeholder='Enter Your Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
-      <button type='submit' onClick={handleclick}>Login</button>
+      <button type='submit'>Login</button>
     </div>
   )
 }

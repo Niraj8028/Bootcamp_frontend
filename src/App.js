@@ -2,22 +2,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
+import Login from './Components/Signin/Signin';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
-          <h1>Learn React</h1>
-          <Navbar/>
-          <BrowserRouter>
+        <BrowserRouter>
+          <Navbar />
           <Routes>
-          <Route path='/login' element={<h1>Signin</h1>} />
+            <Route path='/login' element={<Login/>} />
             <Route path='/signup' element={<h1>Signup</h1>} />
-            
-           
+
+
           </Routes>
-          </BrowserRouter>
+        </BrowserRouter>
 
       </header>
     </div>
