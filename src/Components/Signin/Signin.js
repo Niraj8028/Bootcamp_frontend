@@ -55,8 +55,8 @@ function Signin() {
                             className='signin_btn'>Sign in</button>
 
                         <p> Please see our Privacy Notice,.our cookies Notice and Interest-based Ads Notice</p>
-                        <button 
-                          className='create_btn'>Create your Amazon Account</button>
+                       <button 
+                          className='create_btn'>Create your Account</button>
                     </form>
                 </div>
             </div>
