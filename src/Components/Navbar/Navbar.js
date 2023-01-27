@@ -17,8 +17,8 @@ function Navbar() {
         <div className='nav-items'>
             <div className='headerLeft'>
                 <Link to="/">Home</Link>
-                <Link to="">Profile</Link>
-                <Link to="">Interests</Link>
+                <Link to="/profile">Profile</Link>
+                <Link to="/events">events</Link>
 
             </div>
             <span><i class="bx bx-search search-toggle">Search</i></span>

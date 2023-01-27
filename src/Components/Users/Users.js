@@ -29,11 +29,11 @@ function Users() {
       return (
         <div className="popular_card">
                     {
-                        // users.map(user => (
-                        // <div>
-                        //     <UserCard key={user.id} event={user}/>
-                        // </div>
-                        // ))
+                        users.map(user => (
+                        <div>
+                            <UserCard key={user.id} event={user}/>
+                        </div>
+                        ))
                     }
                 </div>
       )
