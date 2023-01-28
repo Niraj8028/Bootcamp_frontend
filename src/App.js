@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import EvenCard from './Components/Eventcard/EvenCard';
 import Events from './Components/Events/Events';
 import Homepage from './Components/Homepage/Homepage';
 import Navbar from './Components/Navbar/Navbar';
@@ -20,6 +21,7 @@ function App() {
           {/* <Homepage/> */}
           {/* <Events/> */}
           {/* <Users/> */}
+          <EvenCard/>
           <Routes>
             <Route path='/login' element={<Login/>} />
             <Route path='/signup' element={<Signup/>} />
