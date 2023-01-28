@@ -17,7 +17,7 @@ function Signup() {
 
     useEffect(()=>{
         const auth=localStorage.getItem('User');
-        if(auth.id){
+        if(auth){
           navigate('/events')
         }
     
@@ -35,12 +35,13 @@ function Signup() {
         })
         result=await result.json();
         console.log(result);
-        
-        if(result){
+
+        if(result.id){
             navigate('/events')        
-          }
+          
         localStorage.setItem('User',JSON.stringify(result.id));
         localStorage.setItem('token',JSON.stringify(result.email));
+        }
         // localStorage.setItem('token',JSON.stringify(result.auth));
 
         
