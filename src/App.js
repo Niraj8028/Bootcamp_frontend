@@ -21,7 +21,7 @@ function App() {
           {/* <Homepage/> */}
           {/* <Events/> */}
           {/* <Users/> */}
-          <EvenCard/>
+          {/* <EvenCard/> */}
           <Routes>
             <Route path='/login' element={<Login/>} />
             <Route path='/signup' element={<Signup/>} />

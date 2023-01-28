@@ -5,7 +5,7 @@ function Events() {
     const [events, setEvents] = useState([])
 
     const getAllEvents = async () => {
-        return fetch("http://localhost:9091/events", {
+        return fetch("http://localhost:9092/events", {
             method: 'Get'
         }).then(Response => {
             // console.log(Response.json());

@@ -7,7 +7,7 @@ function Users() {
         const [users, setUsers] = useState([])
     
         const getAllEvents = async () => {
-            return fetch("http://localhost:9091/users", {
+            return fetch("http://localhost:9092/users", {
                 method: 'Get'
             }).then(Response => {
                 // console.log(Response.json());

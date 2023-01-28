@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import './Signin.css'
@@ -8,29 +8,39 @@ import './Signin.css'
 function Signin() {
     let navigate=useNavigate();
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("sachin1@gmail.com")
+    const [password, setPassword] = useState("123456")
 
+    useEffect(()=>{
+        const auth=localStorage.getItem('User');
+        if(auth){
+          navigate('/events')
+        }
+    
+      },[])
 
-    // const login = (e) => {
-    //     e.preventDefault();
-    //     auth.signInWithEmailAndPassword(email,password)
-    //     .then((auth)=>{
-    //         console.log("success");
-    //         navigate("/")
-    //     })
-    //     .catch(event=>alert(event.message))
+    const handleclick=async()=>{
+        console.log({email,password});
+        let result=await fetch('http://localhost:9090/signIn',{
+          method:'POST',
+          body:JSON.stringify({email,password}),
+          headers:{
+            'Content-Type':'application/JSON'
+          }
+        })
+
+        result=await result.json();
+        console.log("result",result)
+        if(result){
+            localStorage.setItem('User',JSON.stringify(result));
+           
+            navigate("/events")
+            
+        }
         
-        
-    // }
-    // const register = (e) => {
-    //     e.preventDefault();
-    //    auth.createUserWithEmailAndPassword(email,password)
-    //    .then((auth)=>{
-    //     navigate("/")
-    //    })
-    //    .catch(event=>alert(event.message))
-    // }
+      }
+    
+    
 
 
 
@@ -52,11 +62,11 @@ function Signin() {
                         <input value={password} onChange={e => setPassword(e.target.value)} type="password"></input>
                         <button 
                              
-                            className='signin_btn'>Sign in</button>
+                            className='signin_btn' onClick={handleclick}>Sign in</button>
 
                         <p> Please see our Privacy Notice,.our cookies Notice and Interest-based Ads Notice</p>
                        <button 
-                          className='create_btn'>Create your Account</button>
+                          className='create_btn' >Create your Account</button>
                     </form>
                 </div>
             </div>

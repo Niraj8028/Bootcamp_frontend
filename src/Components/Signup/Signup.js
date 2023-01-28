@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import './Signup.css'
@@ -8,46 +8,26 @@ import './Signup.css'
 function Signup() {
     let navigate=useNavigate();
 
-    const [email, setEmail] = useState("")
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [city, setCity] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("niraj@gmail.com")
+    const [firstName, setFirstName] = useState("niraj")
+    const [lastName, setLastName] = useState("pardeshi")
+    const [city, setCity] = useState("Pune")
+    const [pwd, setPwd] = useState("123456")
 
 
-    // const login = (e) => {
-    //     e.preventDefault();
-    //     auth.signInWithEmailAndPassword(email,password)
-    //     .then((auth)=>{
-    //         console.log("success");
-    //         navigate("/")
-    //     })
-    //     .catch(event=>alert(event.message))
-        
-        
-    // }
-    // const register = (e) => {
-    //     e.preventDefault();
-    //    auth.createUserWithEmailAndPassword(email,password)
-    //    .then((auth)=>{
-    //     navigate("/")
-    //    })
-    //    .catch(event=>alert(event.message))
-    // }
-    // const navigate=useNavigate();
-
-    // useEffect(()=>{
-    //   const auth=localStorage.getItem('User')
-    //   if(auth){
-    //     navigate('/')
-    //   }
-    // })
+    useEffect(()=>{
+        const auth=localStorage.getItem('User');
+        if(auth.id){
+          navigate('/events')
+        }
+    
+      },[])
 
     const handleClick=async()=>{
-        console.log(email,password,city,firstName,lastName);
-        let result=await fetch('http://localhost:9091/add/user',{
+        console.log(email,pwd,firstName);
+        let result=await fetch('http://localhost:9090/registerUser',{
             method:'Post',
-            body: JSON.stringify({firstName,lastName,email,password,city}),
+            body: JSON.stringify({firstName,lastName,email,pwd}),
             headers:{
               'Content-Type': 'application/json'
             }
@@ -55,12 +35,15 @@ function Signup() {
         })
         result=await result.json();
         console.log(result);
-        // localStorage.setItem('User',JSON.stringify(result.user));
+        
+        if(result){
+            navigate('/events')        
+          }
+        localStorage.setItem('User',JSON.stringify(result.id));
+        localStorage.setItem('token',JSON.stringify(result.email));
         // localStorage.setItem('token',JSON.stringify(result.auth));
 
-        // if(result){
-        //   navigate('/')        
-        // }
+        
     }
 
 
@@ -99,7 +82,7 @@ function Signup() {
 
 
                         <h5>Password</h5>
-                        <input value={password} onChange={e => setPassword(e.target.value)} type="password"></input>
+                        <input value={pwd} onChange={e => setPwd(e.target.value)} type="password"></input>
 
                         <p> Please see our Privacy Notice,.our cookies Notice and Interest-based Ads Notice</p>
                         <button className='signin_btn' onClick={handleClick}>Sign Up</button>

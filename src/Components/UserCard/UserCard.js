@@ -2,6 +2,7 @@ import React from 'react'
 import "./UserCard.css"
 
 function UserCard({event}) {
+  console.log()
   return (
     <div class="card">
         <div class="card_background_img"></div>
