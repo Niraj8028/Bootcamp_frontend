@@ -5,16 +5,20 @@ function UserCard({event}) {
   console.log()
   return (
     <div class="card">
-        <div class="card_background_img"></div>
-        <div class="card_profile_img"></div>
-        <div class="user_details">
-            <h3>{event.eventName}</h3>
-            <p>{event.city} </p>
-        </div>
-        <div class="card_count">
+       
+        
             
-             <div class="btn">Follow</div>
-        </div>
+           
+
+            <div class="eventcard card-1">
+      <div class="card_icon">{event.city}</div>
+      <p class="card__exit">Date</p>
+      <h2 class="card__title">{event.eventName}  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+      <p class="card_apply">
+        <a class="card_link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
+      </p>
+    </div>
+        
     </div>
   )
 }

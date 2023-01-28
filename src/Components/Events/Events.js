@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import UserCard from '../UserCard/UserCard'
+import "./Events.css"
 
 function Events() {
     const [events, setEvents] = useState([])
@@ -25,6 +26,8 @@ function Events() {
     }, [])
 
   return (
+    <div className="popular_list">
+            <h1 className="popular_title">Events</h1>
     <div className="popular_card">
                 {
                     events.map(event => (
@@ -33,6 +36,7 @@ function Events() {
                     </div>
                     ))
                 }
+            </div>
             </div>
   )
 }

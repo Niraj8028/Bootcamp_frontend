@@ -19,7 +19,7 @@ function Navbar() {
             <div className='headerLeft'>
                 <Link to="/">Home</Link>
                 <Link to="/profile">Profile</Link>
-                <Link to="/events">events</Link>
+                <Link to="/events">Events</Link>
             </div>
             <span><i class="bx bx-search search-toggle">Search</i></span>
             <div class="search-block">
