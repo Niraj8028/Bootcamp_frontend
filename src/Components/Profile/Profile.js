@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "./Profile.css"
 import UserCard from '../UserCard/UserCard'
 import { isAuthenticated } from '../Helper/Helper'
-import Checkbox from '../Checkbox/Checkbox'
+
 
 function Profile() {
 
@@ -10,6 +10,10 @@ function Profile() {
   const [allInterests, setAllinterests] = useState([])
   const [events, setEvents] = useState([])
   const [user, setUser] = useState([])
+
+  const [api, setApi] = useState([])
+    const [selected, setSelected] = useState([])
+    const [interest, setInterest] = useState("")
 
   let userId = isAuthenticated();
 
@@ -72,14 +76,44 @@ function Profile() {
       console.log("all", data)
       setAllinterests(data)
     })
-
-
-
   }
-  useEffect(() => {
-    loadData();
 
-  }, [])
+  const handleChnage = async (e, index) => {
+
+    setInterest(e.target.value)
+    console.log("interst", interest);
+
+    const activeData = document.getElementById(index).checked
+    console.log(activeData, "activeData")
+    if (activeData == true) {
+        let result = await fetch(`http://localhost:9090/add/interest/${userId}/${interest}`, {
+            method: 'Put'
+        })
+        // result=await result.json();
+        console.log(result);
+        setSelected(oldData => [...oldData, e.target.value])
+    } else {
+        setSelected(selected.filter(values => values !== e.target.value))
+    }
+}
+
+  useEffect(() => {
+    fetch("http://localhost:9090/interests").then(data => data.json())
+        .then(
+
+            val => setApi(val)
+
+        )
+
+}, [])
+
+useEffect(() => {
+  loadData();
+}, [])
+
+
+
+
 
   return (
     <div className='profilepage'>
@@ -137,10 +171,20 @@ function Profile() {
         </div>
       </div>
       </div>
-      <div className='interests'>
-      < Checkbox/>
-
-      </div>
+      <div className="interests">
+            <h3>Add Interests</h3>
+            {
+                api.map((fruit, i) =>
+                    <div className="check"  key={i}>
+                        <input id={i} type="checkbox" value={fruit.interestName} onChange={(e) => handleChnage(e, i)} /><span>{fruit.interestName}</span>
+                    </div>
+                )
+            }
+            <br />
+            {
+                selected.map((a, i) => <div key={i}>{a}</div>)
+            }
+        </div>
 
     </div>
   )
