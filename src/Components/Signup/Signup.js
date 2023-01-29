@@ -27,7 +27,7 @@ function Signup() {
         console.log(email,pwd,firstName);
         let result=await fetch('http://localhost:9090/registerUser',{
             method:'Post',
-            body: JSON.stringify({firstName,lastName,email,pwd}),
+            body: JSON.stringify({firstName,lastName,email,pwd,city}),
             headers:{
               'Content-Type': 'application/json'
             }

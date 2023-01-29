@@ -3,15 +3,18 @@ body {
 }
 .profilepage{
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 
-/* .interests{
-    
+ .interests{
+    position: absolute;
+    top: 55px;
+    right: 100px;
+    max-width: 380px;
     min-width: 200px;
-    min-height: 370px;
+    min-height: 390px;
     border: 1px solid black;
     margin: 45px;
     background-color: #ffffff;
@@ -21,11 +24,14 @@ body {
     box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
     border: none;
     margin-bottom: 30px;
-}   
+}  
+.interests h5{
+    font-weight: 600;
+} 
 .check{
     padding: 3px;
     
-} */
+} 
 .padding {
     padding: 3rem !important
 }

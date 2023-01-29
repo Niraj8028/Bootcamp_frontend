@@ -20,9 +20,6 @@ function UserProfile() {
     }
 
     const loadAllResults = () => {
-
-
-
         getUserData().then(data => {
             console.log("interests", data)
             setUser(data)

@@ -8,7 +8,7 @@ import './Signin.css'
 function Signin() {
     let navigate=useNavigate();
 
-    const [email, setEmail] = useState("sachin1@gmail.com")
+    const [email, setEmail] = useState("sachi@gmail.com")
     const [password, setPassword] = useState("123456")
 
     useEffect(()=>{
@@ -32,7 +32,7 @@ function Signin() {
         result=await result.json();
         console.log("result",result)
         if(result){
-            localStorage.setItem('User',JSON.stringify(result));
+            localStorage.setItem('User',JSON.stringify(result.id));
            
             navigate("/events")
             
