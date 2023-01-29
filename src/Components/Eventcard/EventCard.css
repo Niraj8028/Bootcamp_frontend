@@ -1,138 +1,124 @@
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-  
-  .main-container {
-    padding: 30px;
-  }
-  
-  /* HEADING */
-  
-  .heading {
-    text-align: center;
-  }
-  
-  .heading__title {
-    font-weight: 600;
-  }
-  
-  .heading__credits {
-    margin: 10px 0px;
-    color: #888888;
-    font-size: 25px;
-    transition: all 0.5s;
-  }
-  
-  .heading__link {
-    text-decoration: none;
-  }
-  
-  .heading__credits .heading__link {
-    color: inherit;
-  }
-  
-  /* CARDS */
-  
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .eventcard {
-    /* margin: 20px; */
-    padding: 20px;
-    width: 400px;
-    min-height: 200px;
-    display: grid;
-    grid-template-rows: 20px 50px 1fr 50px;
-    border-radius: 10px;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-    transition: all 0.2s;
-  }
-  
-  .card:hover {
-    /* box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4); */
-    transform: scale(1.01);
-  }
-  
-  .card_link,
-  .card__exit,
-  .card__icon {
-    position: relative;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.9);
-  }
-  .card_link{
-    font-size: 20px;
-  }
-  
-  .card_link::after {
-    position: absolute;
-    top: 25px;
-    left: 0;
-    content: "";
-    width: 0%;
-    height: 3px;
-    background-color: rgba(255, 255, 255, 0.6);
-    transition: all 0.5s;
-  }
-  
-  .card_link:hover::after {
-    width: 100%;
-  }
-  
-  .card__exit {
-    grid-row: 1/2;
-    justify-self: end;
-  }
-  
-  .card_icon {
-    grid-row: 2/3;
-    font-size: 23px;
-    font-weight: 700;
-  }
-  
-  .card__title {
-    margin-top: -10px;
-    grid-row: 3/4;
-    font-weight: 400;
-    color: #fffcfc;
-  }
-  
-  .card_apply {
-    margin-top: 10px;
-    background-color: rgb(190, 55, 55);
-    grid-row: 4/5;
-    align-self: center;
-    /* border: solid rgb(255, 255, 255) 2px; */
-    border-radius: 10px;
-    padding: 5px 0px;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
 
-  }
+
+
+body {
+  background: #F1F3FA;
+}
+
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+.row_profile{
+}
+/* Profile sidebar */
+.profile {
+  padding: 20px 0 10px 0;
+  background: #fff;
+  max-width: 220px;
+  /* border: solid black 1px;
+   */
+   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+
   
-  /* CARD BACKGROUNDS */
+}
+.profile:hover{
+  transform: scale(1.01);
+}
+
+.profile-userpic img {
+  float: none;
+  /* border: solid black 1px; */
+  margin-left: 60px ;
   
-  .card-1 {
-    background: radial-gradient(#60a1b0, #2b82b8);
-  }
-  
-  .card-5 {
-    background: radial-gradient(#f588d8, #c0a3e5);
-  }
-  
-  /* RESPONSIVE */
-  
-  @media (max-width: 1600px) {
-    .cards {
-      justify-content: center;
-    }
-  } 
+  width: 50%;
+  height: 50%;
+  max-width: 100px;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  /* text-transform: uppercase; */
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}

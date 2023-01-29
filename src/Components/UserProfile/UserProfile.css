@@ -1,17 +1,7 @@
 body {
     background-color: #f9f9fa
 }
-.profilepage{
-    display: flex;
-    flex-direction: row;
-}
-.container{
-    flex: 70%;
-}
-.interest{
-    flex: 30%;
-    
-}
+
 .padding {
     padding: 3rem !important
 }

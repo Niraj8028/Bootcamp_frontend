@@ -1,4 +1,4 @@
-.popular_title{
+/* .popular_title{
     text-align: center;
     margin-bottom: 10px;
 }
@@ -6,4 +6,10 @@
     display: grid;
     grid-template-columns: auto auto auto ;
     
-}
+} */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:start;
+  }

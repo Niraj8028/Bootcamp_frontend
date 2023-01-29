@@ -1,0 +1,17 @@
+.checkbox{
+    min-width: 200px;
+    min-height: 370px;
+    border: 1px solid black;
+    margin: 45px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+   
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    border: none;
+    margin-bottom: 30px;
+}   
+.check{
+    padding: 3px;
+    
+}

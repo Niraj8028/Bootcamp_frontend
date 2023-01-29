@@ -1,29 +1,65 @@
 import React from 'react'
+import { isAuthenticated } from '../Helper/Helper'
 import "./EventCard.css"
+import { Link, useNavigate } from 'react-router-dom'
 
-function EvenCard() {
-  return (
-    <div class="eventcard card-1">
-      <div class="card_icon">City</div>
-      <p class="card__exit">Date</p>
-      <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-      <p class="card_apply">
-        <a class="card_link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
-      </p>
-    </div>
-    // <div class="cards">
-    // <div class="card card-1">
-    //   <p class="card__exit">Date</p>
 
-    //   <h2 class="card__title">Lorem ipsum dolor sit amet,.</h2>
+function EvenCard({user}) {
+  console.log(user.email);
+    let userid=isAuthenticated();
+    let navigate=useNavigate();
+
+
+  const followUser=async()=>{
+    
+    let result=await fetch(`http://localhost:9090/add/${userid}/to/${user.id}`,{
+      method:'Put',
       
-    //   <div class="card__icon"><i class="fas fa-bolt"></i></div>
+    })
+    result=await result.json();
+    console.log("result",result)
+  }
 
-    //   <p class="card__apply">
-    //     <a class="card__link" href="#">Register Now <i class="fas fa-arrow-right"></i></a>
-    //   </p>
-    // </div>
-    // </div>
+  const viewProfile=async()=>{
+    navigate(`/profile/${user.id}`);
+    // let result=await fetch(`http://localhost:9090/user/${user.id}`,{
+    //   method:'Get',
+      
+    // })
+    // result=await result.json();
+    // console.log("result",result)
+    
+
+  }
+
+
+  return (
+    
+    
+			<div class="profile">
+			
+				<div class="profile-userpic">
+					<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" class="img-responsive" alt=""/>
+				</div>
+			
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{user.firstName} {user.lastName}
+					</div>
+					<div class="profile-usertitle-job">
+						{user.email}
+					</div>
+				</div>
+				
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm" onClick={followUser}>Follow</button>
+					<button type="button" class="btn btn-danger btn-sm" onClick={viewProfile}>View Profile</button>
+				</div>
+			
+				
+	
+			</div>
+		
   )
 }
 

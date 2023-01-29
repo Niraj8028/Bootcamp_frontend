@@ -26,9 +26,7 @@ function Events() {
     }, [])
 
   return (
-    <div className="popular_list">
-            <h1 className="popular_title">Events</h1>
-    <div className="popular_card">
+    <div class="cards">
                 {
                     events.map(event => (
                     <div>
@@ -37,7 +35,7 @@ function Events() {
                     ))
                 }
             </div>
-            </div>
+            
   )
 }
 

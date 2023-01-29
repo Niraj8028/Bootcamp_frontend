@@ -39,6 +39,9 @@ function Signin() {
         }
         
       }
+      const nav=()=>{
+        navigate("/signup")
+      }
     
     
 
@@ -66,7 +69,7 @@ function Signin() {
 
                         <p> Please see our Privacy Notice,.our cookies Notice and Interest-based Ads Notice</p>
                        <button 
-                          className='create_btn' >Create your Account</button>
+                          className='create_btn' onClick={nav} >Create your Account</button>
                     </form>
                 </div>
             </div>
