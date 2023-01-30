@@ -40,7 +40,7 @@ function Signup() {
             navigate('/events')        
           
         localStorage.setItem('User',JSON.stringify(result.id));
-        localStorage.setItem('token',JSON.stringify(result.email));
+        localStorage.setItem('city',JSON.stringify(result.city));
         }
         // localStorage.setItem('token',JSON.stringify(result.auth));
 

@@ -23,10 +23,11 @@
   } */
   
   .card1 {
+    margin-top: 10px;
     margin-top: 20px;
-    margin-left: 10px;
+    margin-left: 20px;
     padding: 20px;
-    width: 450px;
+    width: 400px;
     min-height: 200px;
     display: grid;
     grid-template-rows: 20px 50px 1fr 50px;
@@ -75,6 +76,7 @@
     grid-row: 2/3;
     font-size: 17px;
     font-weight:600  ;
+    text-decoration: underline;
   }
   
   .card__title {
@@ -102,11 +104,11 @@
   }
   
   .card-3 {
-    background-color: #64af55;
+    background-color: #92d285;
   }
   
   .card-4 {
-    background: radial-gradient(#60efbc, #58d5c9);
+    background: rgb(143, 138, 236);
   }
   
   .card-5 {

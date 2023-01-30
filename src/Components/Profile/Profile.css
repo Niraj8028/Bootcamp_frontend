@@ -5,8 +5,22 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    overflow: hidden;
 }
-
+.friends{
+    max-width: 820px;
+    margin: 10px auto ;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    padding: 10px;
+}
+.events{
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 10px auto ;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    padding: 10px;
+}
 
  .interests{
     position: absolute;
@@ -25,7 +39,7 @@ body {
     border: none;
     margin-bottom: 30px;
 }  
-.interests h5{
+.interests h5, .friends h4{
     font-weight: 600;
 } 
 .check{

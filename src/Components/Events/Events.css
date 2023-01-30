@@ -8,8 +8,17 @@
     
 } */
 
-.cards {
+    .title{
+        font-weight: 600;
+        margin: 40px 35px;
+        color: rgba(0, 0, 0, 0.671);
+        margin: 30px auto;
+    }
+
+  .results{
+    margin-top: 20px auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content:start;
-  }
+   flex-direction: row;
+   justify-content: flex-start;
+   
+}

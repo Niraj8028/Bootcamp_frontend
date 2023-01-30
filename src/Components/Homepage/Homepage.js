@@ -71,7 +71,7 @@ function Homepage() {
             {/* <h3>Events In Pune</h3> */}
             {/* <h1 className="pune_events">Events</h1> */}
             <div className="event_card">
-            <h3>Events In Pune</h3>
+            <h3 className='heading'>Events In Pune</h3>
 
                 {
                     eventsPune.map(event => (
@@ -83,7 +83,7 @@ function Homepage() {
             </div>
 
             <div className="event_card">
-            <h3>Events In Delhi</h3>
+            <h3 className='heading'>Events In Delhi</h3>
 
                 {
                     eventsDelhi.map(event => (
@@ -96,7 +96,7 @@ function Homepage() {
             {/* <h3>Events In Pune</h3> */}
 
             <div className="event_card">
-            <h3>Coding Events</h3>
+            <h3 className='heading'>Coding Events</h3>
 
                 {
                     eventsCoding.map(event => (

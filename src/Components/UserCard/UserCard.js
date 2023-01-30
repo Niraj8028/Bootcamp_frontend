@@ -10,10 +10,10 @@ function UserCard({ event }) {
     let name = event.eventName;
     console.log(name);
 
-    let result = await fetch(`http://localhost:9090/register/event/${userId}/${name}`, {
+    let result = await fetch(`http://localhost:9090/register/event/${userId}/to/${event.event_id}`, {
       method: 'Put'
     })
-    // result=await result.json();
+    result=await result.json();
     console.log(result);
 
 
@@ -22,7 +22,7 @@ function UserCard({ event }) {
   return (
     <div class="card1">
 
-      <div class="card1 card-3">
+      <div class="card1 card-4">
         <div class="card__icon"><i class="fa-solid fa-calendar-days"></i> {event.date}</div>
         <p class="card__exit"><i class="fa-solid fa-city"></i> {event.city}</p>
         <h2 class="card__title">{event.eventName}</h2>

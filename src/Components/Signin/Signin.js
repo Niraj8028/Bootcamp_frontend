@@ -14,7 +14,7 @@ function Signin() {
     useEffect(()=>{
         const auth=localStorage.getItem('User');
         if(auth){
-          navigate('/events')
+          navigate('/profile')
         }
     
       },[])
@@ -33,6 +33,7 @@ function Signin() {
         console.log("result",result)
         if(result){
             localStorage.setItem('User',JSON.stringify(result.id));
+            localStorage.setItem('city',JSON.stringify(result.city));
            
             navigate("/events")
             

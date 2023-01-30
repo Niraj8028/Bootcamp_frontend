@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 
 function UserProfile() {
     const [user, setUser] = useState([])
+  const [interests, setInterests] = useState([])
+
     const params = useParams();
     const { id } = params;
     console.log("user id", id);
@@ -18,12 +20,27 @@ function UserProfile() {
             })
             .catch(err => console.log(err));
     }
+    const getUserInterests = () => {
+        return fetch(`http://localhost:9090/user/interests/${id}`, {
+          method: "GET"
+        })
+          .then(response => {
+            return response.json();
+          })
+          .catch(err => console.log(err));
+      };
 
     const loadAllResults = () => {
         getUserData().then(data => {
-            console.log("interests", data)
+            console.log("user", data)
             setUser(data)
         })
+        getUserInterests().then(data => {
+            console.log("user interests", data)
+            setInterests(data)
+        })
+
+        
     }
     useEffect(() => {
         loadAllResults();
@@ -46,34 +63,38 @@ function UserProfile() {
                                                     <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image" />
                                                 </div>
                                                 <h6 class="f-w-600">{user.firstName} {user.lastName}  </h6>
-                                                <p>{user.city}</p>
+                                                <p><i class="fa-solid fa-house"></i> {user.city}</p>
                                                 <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                             </div>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="card-block">
-                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600"> User Information</h6>
+                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600"><i class="fa-solid fa-circle-info"></i> User Information</h6>
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Email</p>
+                                                        <p class="m-b-10 f-w-600"><i class="fa-solid fa-envelope"></i> Email</p>
                                                         <h6 class="text-muted f-w-400">{user.email}</h6>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Phone</p>
+                                                        <p class="m-b-10 f-w-600"><i class="fa-solid fa-phone"></i> Phone</p>
                                                         <h6 class="text-muted f-w-400">98979989898</h6>
                                                     </div>
                                                 </div>
                                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Interests</h6>
                                                 <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Recent</p>
-                                                        <h6 class="text-muted f-w-400">Sam Disuja</h6>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Most Viewed</p>
-                                                        <h6 class="text-muted f-w-400">Dinoter husainm</h6>
-                                                    </div>
-                                                </div>
+                          
+
+                          {
+                                                      interests.map((a, i) =>
+
+
+                                                          <div class="col-sm-6" key={i}>
+                                                              <p class="m-b-10 f-w-600"><i class="fa-sharp fa-solid fa-circle-dot"></i> {a.interestName}</p>
+
+                                                          </div>
+                                                      )
+                                                  } 
+                        </div>
 
 
 

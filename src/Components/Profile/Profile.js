@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import "./Profile.css"
 import UserCard from '../UserCard/UserCard'
 import { isAuthenticated } from '../Helper/Helper'
-
+import EvenCard from '../Eventcard/EvenCard'
+import FriendCard from '../FriendCard/FriendCard'
 
 function Profile() {
 
@@ -12,12 +13,41 @@ function Profile() {
   const [selected, setSelected] = useState([])
   const [interest, setInterest] = useState("")
   const [interests, setInterests] = useState([])
+  const [friend, setFriend] = useState([])
+  const [event, setEvent] = useState([])
   const userId = isAuthenticated();
 
   const userid = isAuthenticated();
 
+  let size=interests.length;
+  let size1=friend.length;
+  let size2=event.length;
+
+  // console.log("size os]",size)
+
   const getUserInterests = () => {
     return fetch(`http://localhost:9090/user/interests/${userId}`, {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+  const getEvents = () => {
+    return fetch(`http://localhost:9090/user/events/${userId}`, {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+  const getFriends = () => {
+    return fetch(`http://localhost:9090/friends/${userId}`, {
       method: "GET"
     })
       .then(response => {
@@ -38,13 +68,22 @@ function Profile() {
   const loadAllResults = () => {
 
     getUserData().then(data => {
-      console.log("interests", data)
+      // console.log("userdata", data)
       setUser(data)
     })
     getUserInterests().then(data => {
-      console.log("interests", data)
+      // console.log("interests", data)
       setInterests(data)
     })
+    getFriends().then(data => {
+      // console.log("interests", data)
+      setFriend(data)
+    })
+    getEvents().then(data => {
+      console.log("events", data)
+      setEvent(data)
+    })
+    
   }
 
   useEffect(() => {
@@ -55,7 +94,7 @@ function Profile() {
         val => setApi(val)
 
       )
-  }, [])
+  }, []);
 
   const handleChnage = async (e, index) => {
 
@@ -96,20 +135,20 @@ function Profile() {
                           <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image" />
                         </div>
                         <h6 class="f-w-600">{user.firstName} {user.lastName}</h6>
-                        <p>{user.city}</p>
+                        <p><i class="fa-solid fa-house"></i> {user.city}</p>
                         <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                       </div>
                     </div>
                     <div class="col-sm-8">
                       <div class="card-block">
-                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600"> User Information</h6>
+                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600"><i class="fa-solid fa-circle-info"></i> User Information</h6>
                         <div class="row">
                           <div class="col-sm-6">
-                            <p class="m-b-10 f-w-600">Email</p>
+                            <p class="m-b-10 f-w-600"><i class="fa-solid fa-envelope"></i> Email</p>
                             <h6 class="text-muted f-w-400">{user.email}</h6>
                           </div>
                           <div class="col-sm-6">
-                            <p class="m-b-10 f-w-600">Phone</p>
+                            <p class="m-b-10 f-w-600"><i class="fa-solid fa-phone"></i> Phone</p>
                             <h6 class="text-muted f-w-400">98979989898</h6>
                           </div>
                         </div>
@@ -127,7 +166,7 @@ function Profile() {
                           }
 
                           {
-                                                      interests.map((a, i) =>
+                                                      size!=0 && size!=undefined && interests.map((a, i) =>
 
 
                                                           <div class="col-sm-6" key={i}>
@@ -157,6 +196,31 @@ function Profile() {
         }
 
       </div>
+      <div className='friends'>
+      <h4><i class="fa-solid fa-user-group"></i>  Friends</h4>
+
+      {
+                size1!=0 && size1!=undefined && friend.map((user,index) => (
+                    <div>
+                        <FriendCard user={user} key={index}/>
+                    </div>
+                    ))
+                }
+      </div>
+
+      {/* <div className='events'> */}
+      {/* <h4><i class="fa-solid fa-calendar"></i>  Registered Events</h4>
+
+      {
+                size2!=0 && size2!=undefined && event.map((user,index) => (
+                    <div>
+                        <UserCard event={user} key={index}/>
+                    </div>
+                    ))
+                }
+      </div> */}
+        
+        
     </div>
   )
 }
